@@ -18,4 +18,12 @@ const (
 	UsersView        = "/api/v2/user/view"
 	UsersSuperSearch = "/api/v2/user/super-search"
 	UsersSearch      = "/api/v2/user/search"
+
+	// UsersStatusControl 其他辅助接口
+	UsersStatusControl = "/api/v2/user/user-status-control"
+	UsersValidate      = "/api/v2/user/validate-users"
+	UsersBalance       = "/api/v2/user/balance"
+	UsersSendCode      = "/api/v2/user/send-code"
+	UsersMaxOnlineNum  = "/api/v2/user/max-online-num"
+	UsersBindingPhone  = "/api/v2/user/binding-phone"
 )
