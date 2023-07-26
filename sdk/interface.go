@@ -1,6 +1,8 @@
 package sdk
 
 const (
-	KeyApiSdkAccessToken = "key:api:sdk:access_token"
-	GetAccessToken       = "/api/v2/auth/get-access-token"
+	// UsersCreate 用户相关
+	UsersCreate = "/api/v2/users"
+	UsersUpdate = "/api/v2/user/update"
+	UsersDelete = "/api/v2/user/delete"
 )

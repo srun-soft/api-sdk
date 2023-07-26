@@ -1,18 +1,22 @@
-package sdk
+package tools
 
 import (
 	"net/url"
 	"srunsoft-api-sdk/configs"
-	"srunsoft-api-sdk/tools"
 	"time"
 )
 
+const (
+	KeyApiSdkAccessToken = "key:api:sdk:access_token"
+	GetAccessToken       = "/api/v2/auth/get-access-token"
+)
+
 // GetToken 获取 access_token
-func (c APIClient) GetToken() (string, error) {
+func GetToken() (string, error) {
 	var (
 		token string
 		err   error
-		res   tools.SrunResponse
+		res   SrunResponse
 	)
 	cache := configs.Cache
 	if cache == nil {
@@ -25,7 +29,7 @@ func (c APIClient) GetToken() (string, error) {
 	v.Set("appId", configs.Config.AppId)
 	v.Set("appSecret", configs.Config.AppSecret)
 
-	res, err = tools.HandlePost(GetAccessToken, v)
+	res, err = HandlePost(GetAccessToken, v)
 	if err != nil {
 		configs.Log.WithField("获取access_token失败", err).Error()
 	}
