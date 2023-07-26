@@ -5,16 +5,6 @@ import (
 	"srunsoft-api-sdk/tools"
 )
 
-type SDK interface {
-	GetToken() (string, error)
-}
-
-type Users interface {
-	CreateUser(map[string]interface{}) (tools.SrunResponse, error)
-	UpdateUser(map[string]interface{}) (tools.SrunResponse, error)
-	DeleteUser(map[string]interface{}) (tools.SrunResponse, error)
-}
-
 type APIClient struct {
 }
 

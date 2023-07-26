@@ -80,11 +80,19 @@ func HandleDelete(urlPath string, data url.Values) (SrunResponse, error) {
 
 func HandleGet(urlPath string, data url.Values) (SrunResponse, error) {
 	var (
-		resp *http.Response
-		sr   SrunResponse
-		err  error
+		token string
+		resp  *http.Response
+		sr    SrunResponse
+		err   error
 	)
 
+	if urlPath != GetAccessToken {
+		token, err = GetToken()
+		if err != nil {
+			return sr, err
+		}
+		data.Set("access_token", token)
+	}
 	urlWithParams := fmt.Sprintf("%s%s%s?%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath, data.Encode())
 
 	resp, err = http.Get(urlWithParams)
