@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// GetToken 获取 access_token
 func (c APIClient) GetToken() (string, error) {
 	var (
 		token string
