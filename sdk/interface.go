@@ -107,4 +107,11 @@ const (
 	UsersSearchMobilePhone = "/api/v2/user/search-mobile-phone"
 	ProductsCheckOperators = "/api/v2/product/check-operators"
 	ProductsOperators      = "/api/v2/product/operators"
+
+	// BasesListMacAuth 无感知相关
+	BasesListMacAuth   = "/api/v2/base/list-mac-auth"
+	BasesCreateMacAuth = "/api/v2/base/create-mac-auth"
+	BasesDeleteMacAuth = "/api/v2/base/delete-mac-auth"
+	BasesUpdateMacAuth = "/api/v2/base/update-mac-auth"
+	BasesPhoneAuth     = "/api/v2/base/phone-auth"
 )
