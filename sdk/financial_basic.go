@@ -43,3 +43,8 @@ func (APIClient) FinancialTransfer(data map[string]interface{}) (tools.SrunRespo
 func (APIClient) FinancialRechargeCards(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(FinancialsRechargeCards, data, "GET")
 }
+
+// FinancialPaymentDataSync 缴费数据同步
+func (APIClient) FinancialPaymentDataSync(data map[string]interface{}) (tools.SrunResponse, error) {
+	return ApiCall(FinancialsPaymentDataSync, data)
+}
