@@ -48,4 +48,8 @@ const (
 	// VisitorsWhiteCreate 访客白名单
 	VisitorsWhiteCreate = "/api/v2/visitor/create-visitor-white"
 	VisitorsWhiteDelete = "/api/v2/visitor/delete-visitor-white"
+
+	GroupsSearchAll = "/api/v2/groups"
+	GroupsSubscribe = "/api/v2/group/subscribe"
+	GroupsCreate    = "/api/v2/groups"
 )
