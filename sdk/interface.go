@@ -132,4 +132,9 @@ const (
 	// Details 上网明细相关
 	Details    = "/api/v2/details"
 	DetailsTop = "/api/v2/detail/top"
+
+	// MessagesNew 通知公告相关
+	MessagesNew    = "/api/v2/message/new-message"
+	Messages       = "/api/v2/message"
+	MessagesNotice = "/api/v2/message/notice"
 )
