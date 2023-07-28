@@ -78,4 +78,16 @@ const (
 	FinancialsRefund                = "/api/v2/financial/refund"
 	FinancialsPackageRechargeRecord = "/api/v2/financial/package-recharge-record"
 	CheckoutListDetail              = "/api/v2/checkoutlist/detail"
+
+	// ProductsRecharge 产品相关
+	ProductsRecharge             = "/api/v2/product/product-recharge"
+	ProductsRechargeAdvanced     = "/api/v2/product/recharge"
+	ProductsUseNumber            = "/api/v2/product/use-number"
+	ProductsSubscribe            = "/api/v2/product/subscribe"
+	ProductsCanSubscribeProducts = "/api/v2/product/can-subscribe-products"
+	ProductsCancel               = "/api/v2/product/cancel"
+	ProductsRefund               = "/api/v2/product/refund"
+	ProductsExpire               = "/api/v2/product/expire"
+	ProductsDisable              = "/api/v2/product/disable-product"
+	ProductsEnable               = "/api/v2/product/enable-product"
 )
