@@ -16,7 +16,7 @@ type SrunResponse struct {
 	Code    int
 	Message string
 	Version string
-	Data    map[string]interface{}
+	Data    interface{}
 }
 
 func handleRequest(method, urlPath string, data url.Values) (SrunResponse, error) {

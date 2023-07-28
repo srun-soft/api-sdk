@@ -36,8 +36,9 @@ func GetToken() (string, error) {
 	if res.Code != 0 {
 		configs.Log.WithField("获取access_token失败", res.Message).Error()
 	}
-	token = res.Data["access_token"].(string)
-	err = cache.Set(cache.Context(), KeyApiSdkAccessToken, token, time.Duration(res.Data["lifetime"].(float64))).Err()
+	data := res.Data.(map[string]interface{})
+	token = data["access_token"].(string)
+	err = cache.Set(cache.Context(), KeyApiSdkAccessToken, token, time.Duration(data["lifetime"].(float64))).Err()
 	if err != nil {
 		configs.Log.WithField("缓存access_token失败", err).Error()
 		return token, err
