@@ -16,15 +16,15 @@ func ApiCall(urlPath string, data map[string]interface{}, method ...string) (too
 	)
 	v := tools.Map2Values(data)
 
-	// 设置默认请求为"POST"
-	httpMethod := "POST"
+	// 设置默认请求为http.MethodPost
+	httpMethod := http.MethodPost
 	if len(method) > 0 {
 		httpMethod = method[0]
 	}
 	switch httpMethod {
 	case http.MethodGet:
 		res, err = tools.HandleGet(urlPath, v)
-	case "POST":
+	case http.MethodPost:
 		res, err = tools.HandlePost(urlPath, v)
 	case http.MethodPut:
 		res, err = tools.HandlePut(urlPath, v)
