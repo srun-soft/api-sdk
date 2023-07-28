@@ -114,4 +114,11 @@ const (
 	BasesDeleteMacAuth = "/api/v2/base/delete-mac-auth"
 	BasesUpdateMacAuth = "/api/v2/base/update-mac-auth"
 	BasesPhoneAuth     = "/api/v2/base/phone-auth"
+	BasesMacs          = "/api/v2/base/macs"
+	BasesCreateMac     = "/api/v2/base/create-mac"
+	BasesDeleteMac     = "/api/v2/base/delete-mac"
+	BasesUpdateMac     = "/api/v2/base/update-mac"
+	BasesUpdateVlan    = "/api/v2/base/update-vlan"
+	BasesGetIp         = "/api/v2/base/get-ip"
+	BasesBindIp        = "/api/v2/base/bind-ip"
 )
