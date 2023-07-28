@@ -1,9 +1,12 @@
 package tools
 
 import (
+	"errors"
+	"fmt"
+	"net/http"
 	"net/url"
 	"srunsoft-api-sdk/configs"
-	"time"
+	"srunsoft-api-sdk/tools/cache"
 )
 
 const (
@@ -12,36 +15,38 @@ const (
 )
 
 // GetToken 获取 access_token
-func GetToken() (string, error) {
+func GetToken(client HTTPClient, cache cache.Cache) (string, error) {
 	var (
 		token string
 		err   error
 		res   SrunResponse
 	)
-	cache := configs.Cache
+
 	if cache == nil {
 		configs.Log.WithField("Cache", "连接失败").Error()
+		return "", errors.New("cache connection failed")
 	}
-	if token, err = cache.Get(cache.Context(), KeyApiSdkAccessToken).Result(); err != nil && token != "" {
-		return token, err
-	}
-	v := url.Values{}
-	v.Set("appId", configs.Config.AppId)
-	v.Set("appSecret", configs.Config.AppSecret)
 
-	res, err = HandlePost(GetAccessToken, v)
-	if err != nil {
-		configs.Log.WithField("获取access_token失败", err).Error()
+	token = cache.GetCache(KeyApiSdkAccessToken)
+	if token == "" {
+		v := url.Values{}
+		v.Set("appId", configs.Config.AppId)
+		v.Set("appSecret", configs.Config.AppSecret)
+
+		res, err = client.DoRequest(http.MethodPost, GetAccessToken, v)
+		if err != nil {
+			configs.Log.WithField("获取access_token失败", err).Error()
+			return "", err
+		}
+		if res.Code != 0 {
+			configs.Log.WithField("获取access_token失败", res.Message).Error()
+			return "", fmt.Errorf("获取access_token失败: %s", res.Message)
+		}
+
+		data := res.Data.(map[string]interface{})
+		token = data["access_token"].(string)
+		cache.SetCache(KeyApiSdkAccessToken, token, data["lifetime"].(float64))
 	}
-	if res.Code != 0 {
-		configs.Log.WithField("获取access_token失败", res.Message).Error()
-	}
-	data := res.Data.(map[string]interface{})
-	token = data["access_token"].(string)
-	err = cache.Set(cache.Context(), KeyApiSdkAccessToken, token, time.Duration(data["lifetime"].(float64))).Err()
-	if err != nil {
-		configs.Log.WithField("缓存access_token失败", err).Error()
-		return token, err
-	}
-	return token, err
+
+	return token, nil
 }

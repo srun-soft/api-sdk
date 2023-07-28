@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"srunsoft-api-sdk/configs"
+	"srunsoft-api-sdk/tools/cache"
 	"strconv"
 	"strings"
 	"time"
@@ -18,6 +19,11 @@ type SrunResponse struct {
 	Message string
 	Version string
 	Data    interface{}
+}
+
+// HTTPClient 定义HTTP请求接口
+type HTTPClient interface {
+	DoRequest(method, urlPath string, data url.Values) (SrunResponse, error)
 }
 
 type httpClient struct {
@@ -32,7 +38,7 @@ func newHTTPClient() *httpClient {
 	}
 }
 
-func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunResponse, error) {
+func (c *httpClient) DoRequest(method, urlPath string, data url.Values) (SrunResponse, error) {
 	var (
 		token string
 		sr    SrunResponse
@@ -42,7 +48,7 @@ func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunRes
 	reqURL := fmt.Sprintf("%s%s%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath)
 	if data != nil {
 		if urlPath != GetAccessToken {
-			token, err = GetToken()
+			token, err = GetToken(c, &cache.RedisCache{})
 			if err != nil {
 				return sr, err
 			}
@@ -87,22 +93,22 @@ func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunRes
 
 func HandlePost(urlPath string, data url.Values) (SrunResponse, error) {
 	client := newHTTPClient()
-	return client.doRequest(http.MethodPost, urlPath, data)
+	return client.DoRequest(http.MethodPost, urlPath, data)
 }
 
 func HandlePut(urlPath string, data url.Values) (SrunResponse, error) {
 	client := newHTTPClient()
-	return client.doRequest(http.MethodPut, urlPath, data)
+	return client.DoRequest(http.MethodPut, urlPath, data)
 }
 
 func HandleDelete(urlPath string, data url.Values) (SrunResponse, error) {
 	client := newHTTPClient()
-	return client.doRequest(http.MethodDelete, urlPath, data)
+	return client.DoRequest(http.MethodDelete, urlPath, data)
 }
 
 func HandleGet(urlPath string, data url.Values) (SrunResponse, error) {
 	client := newHTTPClient()
-	return client.doRequest(http.MethodGet, urlPath, data)
+	return client.DoRequest(http.MethodGet, urlPath, data)
 }
 
 func Map2Values(m map[string]interface{}) url.Values {
