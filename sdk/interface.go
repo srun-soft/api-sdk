@@ -95,10 +95,16 @@ const (
 	ProductsReservationTransferProducts       = "/api/v2/product/reservation-transfer-products"
 	ProductsCancelReservationTransferProducts = "/api/v2/product/cancel-reservation-transfer-products"
 
+	// PackagesUsersPackages 套餐相关
 	PackagesUsersPackages = "/api/v2/package/users-packages"
 	PackagesBuy           = "/api/v2/package/buy"
 	PackagesBuySuper      = "/api/v2/package/buy-super"
 	Packages              = "/api/v2/packages"
 	PackagesBuys          = "/api/v2/package/buys"
 	PackagesBatch         = "/api/v2/package/batch"
+
+	// UsersSearchMobilePhone 运营商相关
+	UsersSearchMobilePhone = "/api/v2/user/search-mobile-phone"
+	ProductsCheckOperators = "/api/v2/product/check-operators"
+	ProductsOperators      = "/api/v2/product/operators"
 )
