@@ -62,4 +62,14 @@ const (
 	ProductsDelete          = "/api/v2/product/delete"
 	ProductsUpdate          = "/api/v2/product/update"
 	ProductsIndex           = "/api/v2/product/index"
+
+	// FinancialsRechargeWallet 财务相关
+	FinancialsRechargeWallet = "/api/v2/financial/recharge-wallet"
+	FinancialsPayType        = "/api/v2/financial/pay-type"
+	FinancialsCreatePayment  = "/api/v2/financial/create-payment"
+	FinancialsDeletePayment  = "/api/v2/financial/delete-payment"
+	FinancialsUpdatePayment  = "/api/v2/financial/update-payment"
+	FinancialsExtraPay       = "/api/v2/financial/extra-pay"
+	FinancialsTransfer       = "/api/v2/financial/transfer"
+	FinancialsRechargeCards  = "/api/v2/financial/recharge-cards"
 )
