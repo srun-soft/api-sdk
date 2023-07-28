@@ -49,7 +49,17 @@ const (
 	VisitorsWhiteCreate = "/api/v2/visitor/create-visitor-white"
 	VisitorsWhiteDelete = "/api/v2/visitor/delete-visitor-white"
 
+	// GroupsSearchAll 用户组相关
 	GroupsSearchAll = "/api/v2/groups"
 	GroupsSubscribe = "/api/v2/group/subscribe"
 	GroupsCreate    = "/api/v2/groups"
+
+	// StrategiesBillingCreate 计费策略相关
+	StrategiesBillingCreate = ""
+	StrategiesControlCreate = "/api/v2/strategy/control-create"
+	ProductsView            = "/api/v2/product/view"
+	ProductsCreate          = "/api/v2/product/create"
+	ProductsDelete          = "/api/v2/product/delete"
+	ProductsUpdate          = "/api/v2/product/update"
+	ProductsIndex           = "/api/v2/product/index"
 )
