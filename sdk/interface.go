@@ -137,4 +137,10 @@ const (
 	MessagesNew    = "/api/v2/message/new-message"
 	Messages       = "/api/v2/message"
 	MessagesNotice = "/api/v2/message/notice"
+
+	// UsersValidateManager 管理员相关
+	UsersValidateManager           = "/api/v2/user/validate-manager"
+	UsersAddManager                = "/api/v2/user/add-manager"
+	UsersResetPasswordManager      = "/api/v2/user/reset-password-manager"
+	UsersSuperResetPasswordManager = "/api/v2/user/super-reset-password-manager"
 )
