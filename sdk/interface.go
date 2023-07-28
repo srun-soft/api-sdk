@@ -94,4 +94,11 @@ const (
 	ProductsTransferProduct                   = "/api/v2/product/transfer-product"
 	ProductsReservationTransferProducts       = "/api/v2/product/reservation-transfer-products"
 	ProductsCancelReservationTransferProducts = "/api/v2/product/cancel-reservation-transfer-products"
+
+	PackagesUsersPackages = "/api/v2/package/users-packages"
+	PackagesBuy           = "/api/v2/package/buy"
+	PackagesBuySuper      = "/api/v2/package/buy-super"
+	Packages              = "/api/v2/packages"
+	PackagesBuys          = "/api/v2/package/buys"
+	PackagesBatch         = "/api/v2/package/batch"
 )
