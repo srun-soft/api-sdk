@@ -128,4 +128,8 @@ const (
 	Auth                 = "/api/v2/auth"
 	BasesOnlineEquipment = "/api/v2/base/online-equipment"
 	BasesOnlineData      = "/api/v2/base/online-data"
+
+	// Details 上网明细相关
+	Details    = "/api/v2/details"
+	DetailsTop = "/api/v2/detail/top"
 )
