@@ -21,13 +21,13 @@ func ApiCall(urlPath string, data map[string]interface{}, method ...string) (too
 		httpMethod = method[0]
 	}
 	switch httpMethod {
-	case "GET":
+	case http.MethodGet:
 		res, err = tools.HandleGet(urlPath, v)
 	case "POST":
 		res, err = tools.HandlePost(urlPath, v)
-	case "PUT":
+	case http.MethodPut:
 		res, err = tools.HandlePut(urlPath, v)
-	case "DELETE":
+	case http.MethodDelete:
 		res, err = tools.HandleDelete(urlPath, v)
 	default:
 		res, err = tools.HandlePost(urlPath, v)

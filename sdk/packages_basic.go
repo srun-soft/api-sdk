@@ -6,7 +6,7 @@ import "srunsoft-api-sdk/tools"
 
 // PackageUsersPackages 查询已订购的产品/套餐【统计时长/流量包可用总和】
 func (APIClient) PackageUsersPackages(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(PackagesUsersPackages, data, "GET")
+	return ApiCall(PackagesUsersPackages, data, http.MethodGet)
 }
 
 // PackageBuy 购买套餐
@@ -21,7 +21,7 @@ func (APIClient) PackageBuySuper(data map[string]interface{}) (tools.SrunRespons
 
 // Packages 查询可购买的套餐
 func (APIClient) Packages(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(Packages, data, "GET")
+	return ApiCall(Packages, data, http.MethodGet)
 }
 
 // PackageBuys 购买套餐二

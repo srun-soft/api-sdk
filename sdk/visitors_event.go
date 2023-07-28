@@ -11,7 +11,7 @@ func (APIClient) UserEventVisitors(data map[string]interface{}) (tools.SrunRespo
 
 // VisitorViewEventVisitor 查询访客详情
 func (APIClient) VisitorViewEventVisitor(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(EventVisitorView, data, "GET")
+	return ApiCall(EventVisitorView, data, http.MethodGet)
 }
 
 // VisitorCreateEventVisitor 添加事件访客

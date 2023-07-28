@@ -18,7 +18,7 @@ func (APIClient) ProductRecharge(data map[string]interface{}) (tools.SrunRespons
 
 // ProductUseNumber 产品使用人数
 func (APIClient) ProductUseNumber(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(ProductsUseNumber, data, "GET")
+	return ApiCall(ProductsUseNumber, data, http.MethodGet)
 }
 
 // ProductSubscribe 订购产品
@@ -28,7 +28,7 @@ func (APIClient) ProductSubscribe(data map[string]interface{}) (tools.SrunRespon
 
 // ProductCanSubscribeProducts 查询用户可订购的产品列表
 func (APIClient) ProductCanSubscribeProducts(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(ProductsCanSubscribeProducts, data, "GET")
+	return ApiCall(ProductsCanSubscribeProducts, data, http.MethodGet)
 }
 
 // ProductCancel 产品取消
@@ -43,7 +43,7 @@ func (APIClient) ProductRefund(data map[string]interface{}) (tools.SrunResponse,
 
 // ProductExpire 查询产品到期用户
 func (APIClient) ProductExpire(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(ProductsExpire, data, "GET")
+	return ApiCall(ProductsExpire, data, http.MethodGet)
 }
 
 // ProductDisable 禁用产品

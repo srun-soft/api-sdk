@@ -1,6 +1,7 @@
 package sdk
 
 import (
+	"net/http"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -13,10 +14,10 @@ func (APIClient) CreateUser(data map[string]interface{}) (tools.SrunResponse, er
 
 // UpdateUser 编辑用户
 func (APIClient) UpdateUser(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersUpdate, data, "PUT")
+	return ApiCall(UsersUpdate, data, http.MethodPut)
 }
 
 // DeleteUser 删除用户
 func (APIClient) DeleteUser(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersDelete, data, "DELETE")
+	return ApiCall(UsersDelete, data, http.MethodDelete)
 }

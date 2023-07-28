@@ -16,10 +16,10 @@ func (APIClient) UserAddManager(data map[string]interface{}) (tools.SrunResponse
 
 // UserResetPasswordManager 修改管理员密码接口（通过原密码）
 func (APIClient) UserResetPasswordManager(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersResetPasswordManager, data, "PUT")
+	return ApiCall(UsersResetPasswordManager, data, http.MethodPut)
 }
 
 // UserSuperResetPasswordManager 重置管理员密码
 func (APIClient) UserSuperResetPasswordManager(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersSuperResetPasswordManager, data, "PUT")
+	return ApiCall(UsersSuperResetPasswordManager, data, http.MethodPut)
 }

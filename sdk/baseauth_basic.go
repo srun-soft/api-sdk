@@ -8,7 +8,7 @@ import "srunsoft-api-sdk/tools"
 
 // BaseListMacAuth 查询mac认证设备
 func (APIClient) BaseListMacAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesListMacAuth, data, "GET")
+	return ApiCall(BasesListMacAuth, data, http.MethodGet)
 }
 
 // BaseCreateMacAuth 添加mac认证地址

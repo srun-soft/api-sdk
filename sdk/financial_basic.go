@@ -11,7 +11,7 @@ func (APIClient) FinancialRechargeWallet(data map[string]interface{}) (tools.Sru
 
 // FinancialPayType 缴费方式查询
 func (APIClient) FinancialPayType(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(FinancialsPayType, data, "GET")
+	return ApiCall(FinancialsPayType, data, http.MethodGet)
 }
 
 // FinancialCreatePayment 添加缴费方式
@@ -21,7 +21,7 @@ func (APIClient) FinancialCreatePayment(data map[string]interface{}) (tools.Srun
 
 // FinancialDeletePayment 删除缴费方式
 func (APIClient) FinancialDeletePayment(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(FinancialsDeletePayment, data, "DELETE")
+	return ApiCall(FinancialsDeletePayment, data, http.MethodDelete)
 }
 
 // FinancialUpdatePayment 修改缴费方式
@@ -41,7 +41,7 @@ func (APIClient) FinancialTransfer(data map[string]interface{}) (tools.SrunRespo
 
 // FinancialRechargeCards 充值卡查询接口
 func (APIClient) FinancialRechargeCards(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(FinancialsRechargeCards, data, "GET")
+	return ApiCall(FinancialsRechargeCards, data, http.MethodGet)
 }
 
 // FinancialPaymentDataSync 缴费数据同步

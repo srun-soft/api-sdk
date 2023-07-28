@@ -11,5 +11,5 @@ func (APIClient) VisitorCreateVisitorWhite(data map[string]interface{}) (tools.S
 
 // VisitorDeleteVisitorWhite 删除访客白名单
 func (APIClient) VisitorDeleteVisitorWhite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(VisitorsWhiteDelete, data, "DELETE")
+	return ApiCall(VisitorsWhiteDelete, data, http.MethodDelete)
 }

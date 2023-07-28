@@ -9,6 +9,7 @@ import (
 	"srunsoft-api-sdk/configs"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // SrunResponse 北向接口响应结构
@@ -19,12 +20,22 @@ type SrunResponse struct {
 	Data    interface{}
 }
 
-func handleRequest(method, urlPath string, data url.Values) (SrunResponse, error) {
+type httpClient struct {
+	client *http.Client
+}
+
+func newHTTPClient() *httpClient {
+	return &httpClient{
+		client: &http.Client{
+			Timeout: 10 * time.Second,
+		},
+	}
+}
+
+func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunResponse, error) {
 	var (
 		token string
-		resp  *http.Response
 		sr    SrunResponse
-		err   error
 	)
 
 	req, err := http.NewRequest(method, fmt.Sprintf("%s%s%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath), nil)
@@ -46,7 +57,7 @@ func handleRequest(method, urlPath string, data url.Values) (SrunResponse, error
 		req.Header.Set("Content-Length", strconv.Itoa(len(data.Encode())))
 	}
 
-	resp, err = http.DefaultClient.Do(req)
+	resp, err := c.client.Do(req)
 	if err != nil {
 		configs.Log.Error(err)
 		return sr, err
@@ -67,52 +78,23 @@ func handleRequest(method, urlPath string, data url.Values) (SrunResponse, error
 }
 
 func HandlePost(urlPath string, data url.Values) (SrunResponse, error) {
-	return handleRequest(http.MethodPost, urlPath, data)
+	client := newHTTPClient()
+	return client.doRequest(http.MethodPost, urlPath, data)
 }
 
 func HandlePut(urlPath string, data url.Values) (SrunResponse, error) {
-	return handleRequest(http.MethodPut, urlPath, data)
+	client := newHTTPClient()
+	return client.doRequest(http.MethodPut, urlPath, data)
 }
 
 func HandleDelete(urlPath string, data url.Values) (SrunResponse, error) {
-	return handleRequest(http.MethodDelete, urlPath, data)
+	client := newHTTPClient()
+	return client.doRequest(http.MethodDelete, urlPath, data)
 }
 
 func HandleGet(urlPath string, data url.Values) (SrunResponse, error) {
-	var (
-		token string
-		resp  *http.Response
-		sr    SrunResponse
-		err   error
-	)
-
-	if urlPath != GetAccessToken {
-		token, err = GetToken()
-		if err != nil {
-			return sr, err
-		}
-		data.Set("access_token", token)
-	}
-	urlWithParams := fmt.Sprintf("%s%s%s?%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath, data.Encode())
-
-	resp, err = http.Get(urlWithParams)
-	if err != nil {
-		configs.Log.Error(err)
-		return sr, err
-	}
-	defer func(Body io.ReadCloser) {
-		err = Body.Close()
-		if err != nil {
-			configs.Log.Error(err)
-		}
-	}(resp.Body)
-
-	err = json.NewDecoder(resp.Body).Decode(&sr)
-	if err != nil {
-		return sr, err
-	}
-
-	return sr, nil
+	client := newHTTPClient()
+	return client.doRequest(http.MethodGet, urlPath, data)
 }
 
 func Map2Values(m map[string]interface{}) url.Values {

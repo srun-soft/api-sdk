@@ -1,12 +1,15 @@
 package sdk
 
-import "srunsoft-api-sdk/tools"
+import (
+	"net/http"
+	"srunsoft-api-sdk/tools"
+)
 
 // 邀请码访客
 
 // UserViewInvite 查询访客邀请码
 func (APIClient) UserViewInvite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersViewInvite, data, "GET")
+	return ApiCall(UsersViewInvite, data, http.MethodGet)
 }
 
 // UserInviteVisitors 邀请码访客开户

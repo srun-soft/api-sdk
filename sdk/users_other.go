@@ -16,12 +16,12 @@ func (APIClient) UserValidate(data map[string]interface{}) (tools.SrunResponse, 
 
 // UserBalance 返回电子钱包余额接口
 func (APIClient) UserBalance(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersBalance, data, "GET")
+	return ApiCall(UsersBalance, data, http.MethodGet)
 }
 
 // UserSendCode 绑定/更换 手机号码接口 step1
 func (APIClient) UserSendCode(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersSendCode, data, "GET")
+	return ApiCall(UsersSendCode, data, http.MethodGet)
 }
 
 // UserMaxOnlineNum 修改最大在线数接口
@@ -31,5 +31,5 @@ func (APIClient) UserMaxOnlineNum(data map[string]interface{}) (tools.SrunRespon
 
 // UserBindingPhone 绑定/更换 手机号码接口 step2
 func (APIClient) UserBindingPhone(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersBindingPhone, data, "PUT")
+	return ApiCall(UsersBindingPhone, data, http.MethodPut)
 }

@@ -6,7 +6,7 @@ import "srunsoft-api-sdk/tools"
 
 // UserSearchMobilePhone 查询用户订购的产品是否绑定运营商账号
 func (APIClient) UserSearchMobilePhone(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersSearchMobilePhone, data, "GET")
+	return ApiCall(UsersSearchMobilePhone, data, http.MethodGet)
 }
 
 // ProductCheckOperators 验证运营上账号密码
