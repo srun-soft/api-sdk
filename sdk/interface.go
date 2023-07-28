@@ -121,4 +121,11 @@ const (
 	BasesUpdateVlan    = "/api/v2/base/update-vlan"
 	BasesGetIp         = "/api/v2/base/get-ip"
 	BasesBindIp        = "/api/v2/base/bind-ip"
+
+	// BasesOnlineDrop 在线相关
+	BasesOnlineDrop      = "/api/v2/base/online-drop"
+	BasesBatchOnlineDrop = "/api/v2/base/batch-online-drop"
+	Auth                 = "/api/v2/auth"
+	BasesOnlineEquipment = "/api/v2/base/online-equipment"
+	BasesOnlineData      = "/api/v2/base/online-data"
 )
