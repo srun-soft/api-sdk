@@ -26,4 +26,26 @@ const (
 	UsersSendCode      = "/api/v2/user/send-code"
 	UsersMaxOnlineNum  = "/api/v2/user/max-online-num"
 	UsersBindingPhone  = "/api/v2/user/binding-phone"
+
+	// UsersVisitors 访客相关
+	UsersVisitors      = "/api/v2/user/visitors"
+	UsersTokenVisitors = "/api/v2/user/token-visitors"
+
+	// UsersEventVisitors 事件访客
+	UsersEventVisitors = "/api/v2/user/event-visitors"
+	EventVisitorView   = "/api/v2/visitor/view-event-visitor"
+	EventVisitorCreate = "/api/v2/visitor/create-event-visitor"
+	EventVisitorUpdate = "/api/v2/visitor/update-event-visitor"
+	EventVisitorDelete = "/api/v2/visitor/delete-event-visitor"
+
+	// UsersViewInvite 邀请码访客
+	UsersViewInvite    = "/api/v2/user/view-invite"
+	UsersInviteVisitor = "/api/v2/user/invite-visitors"
+	UsersUseInvite     = "/api/v2/user/use-invite"
+	UsersInviteCreate  = "/api/v2/user/create-invite"
+	UsersInviteDisable = "/api/v2/user/disabled-invite"
+
+	// VisitorsWhiteCreate 访客白名单
+	VisitorsWhiteCreate = "/api/v2/visitor/create-visitor-white"
+	VisitorsWhiteDelete = "/api/v2/visitor/delete-visitor-white"
 )
