@@ -36,15 +36,10 @@ func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunRes
 	var (
 		token string
 		sr    SrunResponse
+		err   error
 	)
 
-	req, err := http.NewRequest(method, fmt.Sprintf("%s%s%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath), nil)
-	if err != nil {
-		configs.Log.Error(err)
-		return sr, err
-	}
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-
+	reqURL := fmt.Sprintf("%s%s%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath)
 	if data != nil {
 		if urlPath != GetAccessToken {
 			token, err = GetToken()
@@ -53,6 +48,19 @@ func (c *httpClient) doRequest(method, urlPath string, data url.Values) (SrunRes
 			}
 			data.Set("access_token", token)
 		}
+		if method == http.MethodGet {
+			reqURL = fmt.Sprintf("%s?%s", reqURL, data.Encode())
+		}
+	}
+
+	req, err := http.NewRequest(method, reqURL, nil)
+	if err != nil {
+		configs.Log.Error(err)
+		return sr, err
+	}
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	if method != http.MethodGet && data != nil {
 		req.Body = io.NopCloser(strings.NewReader(data.Encode()))
 		req.Header.Set("Content-Length", strconv.Itoa(len(data.Encode())))
 	}
