@@ -143,4 +143,15 @@ const (
 	UsersAddManager                = "/api/v2/user/add-manager"
 	UsersResetPasswordManager      = "/api/v2/user/reset-password-manager"
 	UsersSuperResetPasswordManager = "/api/v2/user/super-reset-password-manager"
+
+	// LogsLogin 日志相关
+	LogsLogin           = "/api/v2/log/login"
+	LogsAuthErr         = "/api/v2/log/auth-err"
+	LogsAuthErrorTotal  = "/api/v2/log/auth-error-total"
+	LogsSys             = "/api/v2/log/sys"
+	StatisticsDayByte   = "/api/v2/statistics/day-byte"
+	StatisticsDayTime   = "/api/v2/statistics/day-time"
+	StatisticsMonthByte = "/api/v2/statistics/month-byte"
+	FlowsSearch         = "/api/v2/flow/search"
+	AuditsSearch        = "/api/v2/audit/search"
 )
