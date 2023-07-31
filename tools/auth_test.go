@@ -24,7 +24,6 @@ func TestGetToken(t *testing.T) {
 		InterfaceIP: "127.0.0.1",
 		AppId:       "srunsoft",
 		AppSecret:   "ba62f23e6212790052f387ee7af2943e4cfcece0",
-		LogDir:      "runtime",
 	}
 	// 模拟一个HTTP客户端，返回一个成功的响应
 	mockResponse := SrunResponse{

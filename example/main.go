@@ -22,7 +22,6 @@ func main() {
 		InterfaceIP: "127.0.0.1:8001",
 		AppId:       "srunsoft",
 		AppSecret:   "ba62f23e6212790052f387ee7af2943e4cfcece0",
-		LogDir:      "runtime/",
 	}
 
 	// ... 初始化其他配置 ...
@@ -62,10 +61,10 @@ func createClient(host, port string) *redis.Client {
 	})
 	_, err := rdb.Ping(ctx).Result()
 	if err != nil {
-		configs.Log.WithField(fmt.Sprintf("Redis[%s] init err", port), err).Warn()
+		_ = fmt.Errorf("redis[%s] init err", port)
 		return nil
 	}
-	configs.Log.WithField(fmt.Sprintf("Redis[:%s] init", port), "Successful").Info()
+	fmt.Printf("Redis[:%s] init Successful", port)
 	return rdb
 }
 
@@ -76,7 +75,7 @@ func createUserExample() {
 	data["group_id"] = 2
 	data["user_password"] = "12345678"
 	data["products_id"] = 1
-	response, err := API.CreateUser(data)
+	response, err := API.Users(data)
 	if err != nil {
 		return
 	}

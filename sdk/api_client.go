@@ -1,8 +1,8 @@
 package sdk
 
 import (
+	"fmt"
 	"net/http"
-	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -34,7 +34,8 @@ func ApiCall(urlPath string, data map[string]interface{}, method ...string) (too
 		res, err = tools.HandlePost(urlPath, v)
 	}
 	if err != nil {
-		configs.Log.WithField("API call failed", err).Error()
+		fmt.Println("API call failed", err)
+		return res, err
 	}
 	return res, err
 }

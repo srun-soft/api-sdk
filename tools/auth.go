@@ -23,8 +23,7 @@ func GetToken(client HTTPClient, cache cache.Cache) (string, error) {
 	)
 
 	if cache == nil {
-		configs.Log.WithField("Cache", "连接失败").Error()
-		return "", errors.New("cache connection failed")
+		return "", errors.New(fmt.Sprintf("cache connection failed:%v", err))
 	}
 
 	token = cache.GetCache(KeyApiSdkAccessToken)
@@ -35,11 +34,11 @@ func GetToken(client HTTPClient, cache cache.Cache) (string, error) {
 
 		res, err = client.DoRequest(http.MethodPost, GetAccessToken, v)
 		if err != nil {
-			configs.Log.WithField("获取access_token失败", err).Error()
+			fmt.Println("获取access_token失败", err)
 			return "", err
 		}
 		if res.Code != 0 {
-			configs.Log.WithField("获取access_token失败", res.Message).Error()
+			fmt.Println("获取access_token失败", res.Message)
 			return "", fmt.Errorf("获取access_token失败: %s", res.Message)
 		}
 

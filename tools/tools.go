@@ -61,7 +61,6 @@ func (c *httpClient) DoRequest(method, urlPath string, data url.Values) (SrunRes
 
 	req, err := http.NewRequest(method, reqURL, nil)
 	if err != nil {
-		configs.Log.Error(err)
 		return sr, err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -73,13 +72,12 @@ func (c *httpClient) DoRequest(method, urlPath string, data url.Values) (SrunRes
 
 	resp, err := c.client.Do(req)
 	if err != nil {
-		configs.Log.Error(err)
 		return sr, err
 	}
 	defer func(Body io.ReadCloser) {
 		err = Body.Close()
 		if err != nil {
-			configs.Log.Error(err)
+			_ = fmt.Errorf("body close failed:%v", err)
 		}
 	}(resp.Body)
 

@@ -2,19 +2,17 @@ package configs
 
 import (
 	"github.com/go-redis/redis/v8"
-	"github.com/sirupsen/logrus"
 )
 
+// APIConfig 接口配置
 type APIConfig struct {
-	Scheme      string
-	InterfaceIP string
-	AppId       string
-	AppSecret   string
-	LogDir      string
+	Scheme      string `comment:"接口协议"`
+	InterfaceIP string `comment:"接口地址"`
+	AppId       string `comment:"appid"`
+	AppSecret   string `comment:"appSecret"`
 }
 
 var (
 	Config *APIConfig
-	Log    *logrus.Logger
 	Cache  *redis.Client
 )
