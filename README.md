@@ -2,7 +2,12 @@
 #### `version v1.0.0`
 
 go调用北向接口SDK
+声明全局SDK指针结构体后,调用对应的接口即可。
+接口常量按照北向接口`Api fox`的接口地址驼峰命名 eg: 
 
+**接口文档地址** : /api/v2/auth/check-modify-password
+
+**sdk对应常量** : AuthCheckModifyPassword
 ## Installation
 To install the SDK package, use the following command:
 ```bash
