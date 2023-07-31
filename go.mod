@@ -3,7 +3,6 @@ module srunsoft-api-sdk
 go 1.19
 
 require (
-	github.com/antonfisher/nested-logrus-formatter v1.3.1
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/sirupsen/logrus v1.9.3
 )

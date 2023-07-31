@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"net/http"
+	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -9,35 +10,35 @@ import (
 
 // BaseMacs 获取用户已绑定的设备列表
 func (APIClient) BaseMacs(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesMacs, data, http.MethodGet)
+	return ApiCall(configs.BasesMacs, data, http.MethodGet)
 }
 
 // BaseCreateMac 增加用户设备（mac地址）
 func (APIClient) BaseCreateMac(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesCreateMac, data)
+	return ApiCall(configs.BasesCreateMac, data)
 }
 
 // BaseDeleteMac 删除用户设置（mac地址）
 func (APIClient) BaseDeleteMac(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesDeleteMac, data, http.MethodDelete)
+	return ApiCall(configs.BasesDeleteMac, data, http.MethodDelete)
 }
 
 // BaseUpdateMac 更新用户设置（mac地址）
 func (APIClient) BaseUpdateMac(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesUpdateMac, data, http.MethodPut)
+	return ApiCall(configs.BasesUpdateMac, data, http.MethodPut)
 }
 
 // BaseUpdateVlan 绑定/更换用户的vlan地址
 func (APIClient) BaseUpdateVlan(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesUpdateVlan, data)
+	return ApiCall(configs.BasesUpdateVlan, data)
 }
 
 // BaseGetIp 根据用户名搜索可用/已用IP
 func (APIClient) BaseGetIp(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesGetIp, data, http.MethodGet)
+	return ApiCall(configs.BasesGetIp, data, http.MethodGet)
 }
 
 // BaseBindIp 绑定IP地址
 func (APIClient) BaseBindIp(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesBindIp, data)
+	return ApiCall(configs.BasesBindIp, data)
 }

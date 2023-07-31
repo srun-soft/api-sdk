@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"net/http"
+	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -9,10 +10,10 @@ import (
 
 // Details 查询上网明细
 func (APIClient) Details(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(Details, data, http.MethodGet)
+	return ApiCall(configs.Details, data, http.MethodGet)
 }
 
 // DetailTop 查询上网流量TOP排名
 func (APIClient) DetailTop(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(DetailsTop, data, http.MethodGet)
+	return ApiCall(configs.DetailsTop, data, http.MethodGet)
 }

@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"net/http"
+	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -9,25 +10,25 @@ import (
 
 // UserViewInvite 查询访客邀请码
 func (APIClient) UserViewInvite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersViewInvite, data, http.MethodGet)
+	return ApiCall(configs.UsersViewInvite, data, http.MethodGet)
 }
 
 // UserInviteVisitors 邀请码访客开户
 func (APIClient) UserInviteVisitors(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersInviteVisitor, data)
+	return ApiCall(configs.UsersInviteVisitor, data)
 }
 
 // UserUseInvite 使用访客邀请码
 func (APIClient) UserUseInvite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersUseInvite, data)
+	return ApiCall(configs.UsersUseInvite, data)
 }
 
 // UserCreateInvite 创建邀请码
 func (APIClient) UserCreateInvite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersInviteCreate, data)
+	return ApiCall(configs.UsersInviteCreate, data)
 }
 
 // UserDisabledInvite 禁用邀请码
 func (APIClient) UserDisabledInvite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(UsersInviteDisable, data)
+	return ApiCall(configs.UsersInviteDisable, data)
 }

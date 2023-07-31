@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"net/http"
+	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -11,25 +12,25 @@ import (
 
 // BaseListMacAuth 查询mac认证设备
 func (APIClient) BaseListMacAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesListMacAuth, data, http.MethodGet)
+	return ApiCall(configs.BasesListMacAuth, data, http.MethodGet)
 }
 
 // BaseCreateMacAuth 添加mac认证地址
 func (APIClient) BaseCreateMacAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesCreateMacAuth, data)
+	return ApiCall(configs.BasesCreateMacAuth, data)
 }
 
 // BaseDeleteMacAuth 删除mac认证地址
 func (APIClient) BaseDeleteMacAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesDeleteMacAuth, data)
+	return ApiCall(configs.BasesDeleteMacAuth, data)
 }
 
 // BaseUpdateMacAuth 更新mac认证地址
 func (APIClient) BaseUpdateMacAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesUpdateMacAuth, data)
+	return ApiCall(configs.BasesUpdateMacAuth, data)
 }
 
 // BasePhoneAuth 手机号无感知
 func (APIClient) BasePhoneAuth(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(BasesPhoneAuth, data)
+	return ApiCall(configs.BasesPhoneAuth, data)
 }

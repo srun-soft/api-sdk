@@ -1,4 +1,4 @@
-package sdk
+package configs
 
 const (
 	// UsersCreate 用户基本操作相关

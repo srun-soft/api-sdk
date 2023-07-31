@@ -2,6 +2,7 @@ package sdk
 
 import (
 	"net/http"
+	"srunsoft-api-sdk/configs"
 	"srunsoft-api-sdk/tools"
 )
 
@@ -9,10 +10,10 @@ import (
 
 // VisitorCreateVisitorWhite 添加访客白名单
 func (APIClient) VisitorCreateVisitorWhite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(VisitorsWhiteCreate, data)
+	return ApiCall(configs.VisitorsWhiteCreate, data)
 }
 
 // VisitorDeleteVisitorWhite 删除访客白名单
 func (APIClient) VisitorDeleteVisitorWhite(data map[string]interface{}) (tools.SrunResponse, error) {
-	return ApiCall(VisitorsWhiteDelete, data, http.MethodDelete)
+	return ApiCall(configs.VisitorsWhiteDelete, data, http.MethodDelete)
 }
