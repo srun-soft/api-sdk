@@ -7,32 +7,32 @@ import (
 
 // 密码相关
 
-// SendCode 忘记密码重置接口【step1.发送短信验证码接口】
-func (APIClient) SendCode(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserCode 忘记密码重置接口【step1.发送短信验证码接口】
+func (APIClient) UserCode(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersCode, data, http.MethodGet)
 }
 
-// ForgetResetPassword 忘记密码重置接口【step2.重置密码】
-func (APIClient) ForgetResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserForgetResetPassword  忘记密码重置接口【step2.重置密码】
+func (APIClient) UserForgetResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersForgetResetPassword, data)
 }
 
-// CheckModifyPassword 验证是否需要修改密码
-func (APIClient) CheckModifyPassword(data map[string]interface{}) (tools.SrunResponse, error) {
+// AuthCheckModifyPassword 验证是否需要修改密码
+func (APIClient) AuthCheckModifyPassword(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(AuthCheckModifyPassword, data)
 }
 
-// GetPassword 查询用户密码 base64
-func (APIClient) GetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserGetPassword 查询用户密码 base64
+func (APIClient) UserGetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersGetPassword, data, http.MethodGet)
 }
 
-// SuperResetPassword 修改密码高级接口
-func (APIClient) SuperResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserSuperResetPassword 修改密码高级接口
+func (APIClient) UserSuperResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersSuperResetPassword, data, http.MethodPut)
 }
 
-// ResetPassword 修改密码接口【根据老密码修改新密码】
-func (APIClient) ResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserResetPassword 修改密码接口【根据老密码修改新密码】
+func (APIClient) UserResetPassword(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersResetPassword, data)
 }

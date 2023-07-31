@@ -12,8 +12,8 @@ func (APIClient) UserView(data map[string]interface{}) (tools.SrunResponse, erro
 	return ApiCall(UsersView, data, http.MethodGet)
 }
 
-// SuperSearch 搜索用户高级接口
-func (APIClient) SuperSearch(data map[string]interface{}) (tools.SrunResponse, error) {
+// UserSuperSearch 搜索用户高级接口
+func (APIClient) UserSuperSearch(data map[string]interface{}) (tools.SrunResponse, error) {
 	return ApiCall(UsersSuperSearch, data, http.MethodGet)
 }
 
