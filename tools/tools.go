@@ -48,7 +48,7 @@ func (c *httpClient) DoRequest(method, urlPath string, data url.Values) (SrunRes
 	reqURL := fmt.Sprintf("%s%s%s", configs.Config.Scheme, configs.Config.InterfaceIP, urlPath)
 	if data != nil {
 		if urlPath != GetAccessToken {
-			token, err = GetToken(c, &cache.RedisCache{})
+			token, err = GetToken(c, cache.Component())
 			if err != nil {
 				return sr, err
 			}

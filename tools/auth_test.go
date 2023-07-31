@@ -40,7 +40,7 @@ func TestGetToken(t *testing.T) {
 	}
 
 	// 调用 GetToken 函数进行测试，传入 mockClient 的指针
-	token, err := GetToken(mockClient, &cache.SyncMapCache{})
+	token, err := GetToken(mockClient, cache.Component())
 
 	// 断言是否有错误发生
 	if err != nil {
