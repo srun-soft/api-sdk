@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/go-redis/redis/v8"
-	"srunsoft-api-sdk/configs"
-	"srunsoft-api-sdk/sdk"
+	"github.com/srun-soft/api-sdk/configs"
+	"github.com/srun-soft/api-sdk/sdk"
 	"sync"
 	"time"
 )

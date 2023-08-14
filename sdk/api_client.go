@@ -2,8 +2,8 @@ package sdk
 
 import (
 	"fmt"
+	"github.com/srun-soft/api-sdk/tools"
 	"net/http"
-	"srunsoft-api-sdk/tools"
 )
 
 type APIClient struct {

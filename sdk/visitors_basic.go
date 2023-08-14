@@ -1,8 +1,8 @@
 package sdk
 
 import (
-	"srunsoft-api-sdk/configs"
-	"srunsoft-api-sdk/tools"
+	"github.com/srun-soft/api-sdk/configs"
+	"github.com/srun-soft/api-sdk/tools"
 )
 
 // 访客相关

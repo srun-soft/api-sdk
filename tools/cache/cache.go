@@ -1,6 +1,6 @@
 package cache
 
-import "srunsoft-api-sdk/configs"
+import "github.com/srun-soft/api-sdk/configs"
 
 // cache
 

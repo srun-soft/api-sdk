@@ -2,7 +2,7 @@ package cache
 
 import (
 	"fmt"
-	"srunsoft-api-sdk/configs"
+	"github.com/srun-soft/api-sdk/configs"
 	"time"
 )
 

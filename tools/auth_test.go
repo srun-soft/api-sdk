@@ -1,9 +1,9 @@
 package tools
 
 import (
+	"github.com/srun-soft/api-sdk/configs"
+	"github.com/srun-soft/api-sdk/tools/cache"
 	"net/url"
-	"srunsoft-api-sdk/configs"
-	"srunsoft-api-sdk/tools/cache"
 	"testing"
 )
 
