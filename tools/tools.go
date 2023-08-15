@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"github.com/srun-soft/api-sdk/configs"
@@ -34,6 +35,9 @@ func newHTTPClient() *httpClient {
 	return &httpClient{
 		client: &http.Client{
 			Timeout: 10 * time.Second,
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			},
 		},
 	}
 }
