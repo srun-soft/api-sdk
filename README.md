@@ -24,36 +24,51 @@ import (
 
 initialize the SDK package and create an API client:
 ```go
+// 声明全局sdk变量
+var SDK *apisdk.ApiConfig
+
 func main() {
-	configs.Config = &configs.APIConfig{
-        Scheme:      "http://", // 接口协议
-        InterfaceIP: "127.0.0.1:8001", // 接口地址及端口
-        AppId:       "srunsoft", // appid
-        AppSecret:   "ba62f23e6212790052f387ee7af2943e4cfcece0", // appSecret
-        LogDir:      "runtime/", // 日志目录
+    SDK = &apisdk.ApiConfig{
+        AppID       : "srunsoft",
+        AppSecret   : "ba62f23e6212790052f387ee7af2943e4cfcece0",
+        Scheme      : "https",
+        Host        : "192.168.0.191",
+        Port        : 8001,
+        Version     : 2,
+		// 使用redis缓存access_token
+        Cache: redis.NewClient(&redis.Options{
+            Addr        : fmt.Sprintf("%s:%s", "192.168.0.191", "16384"),
+            Password    : "srun_3000@redis",
+            DB          : 0,
+            DialTimeout : 10 * time.Second,
+            ReadTimeout : 30 * time.Second,
+            WriteTimeout: 30 * time.Second,
+            PoolSize    : 100,
+            PoolTimeout : 30 * time.Second,
+        }),
     }
-	
-	// ... 初始化其他配置 ...
-	
-	// 创建 API 客户端
-	API := &sdk.APIClient{}
 }
 ```
 
 ## Examples
 You can find example usage in the `example` directory of this repository;
 ```go
-    // 调用开户接口
-    data := make(map[string]interface{})
-    data["user_name"] = "yt"
-    data["group_id"] = 1
-    data["user_password"] = "12345678"
-    data["products_id"] = 1
-    API := &sdk.APIClient{}
-    response, err := API.CreateUser(data)
-    if err != nil {
-        return
-    }
-    configs.Log.Info(response)
+// 调用查询接口
+// 接口参数使用 url.Values{}, 赋值给 sdk.Params
+// 随后调用响应的方法, sdk.{MethodName}
+// 响应为 response{code:int,message:string,data:interface{}}
+// 详细调用示例查看example
+func version2() {
+    v := url.Values{}
+    v.Add("user_name", "yuantong")
+    SDK.Params = v
+    res := SDK.UserView()
+    fmt.Println(res.Code)
+    fmt.Println(res.Message)
+    if res.Code == 0 {
+    m := res.Data.(map[string]interface{})
+    fmt.Printf("%v", m["user_name"])
+}
+
 ```
 

@@ -32,7 +32,7 @@ func version1() {
 	}
 	v := url.Values{}
 	v.Add("user_name", "yuantong")
-	sdk.Request.Params = v
+	sdk.Params = v
 	res := sdk.UserView()
 	fmt.Println(res.Code)
 	fmt.Println(res.Message)
@@ -57,7 +57,7 @@ func version2() {
 	}
 	v := url.Values{}
 	v.Add("user_name", "yuantong")
-	sdk.Request.Params = v
+	sdk.Params = v
 	res := sdk.UserView()
 	fmt.Println(res.Code)
 	fmt.Println(res.Message)
