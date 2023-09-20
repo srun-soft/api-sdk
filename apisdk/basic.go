@@ -1,4 +1,4 @@
-package version
+package apisdk
 
 import (
 	"fmt"
@@ -16,9 +16,10 @@ type ApiConfig struct {
 	AppSecret   string
 	Scheme      string
 	Host        string
+	Port        int
 	Version     int
 	AccessToken string
-	*Request
+	Request
 }
 
 // GetAccessToken 获取令牌 /**

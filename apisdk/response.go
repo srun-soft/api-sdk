@@ -1,4 +1,4 @@
-package version
+package apisdk
 
 type Response struct {
 	Code    int

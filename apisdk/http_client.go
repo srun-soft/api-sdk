@@ -1,4 +1,4 @@
-package version
+package apisdk
 
 import (
 	"crypto/tls"
@@ -40,9 +40,9 @@ func (c *HttpClient) DoRequest(ac *ApiConfig) (Response, error) {
 	if ac.Version == 1 {
 		ac.UrlPath = strings.ReplaceAll(ac.UrlPath, "v2", "v1")
 	}
-	reqURL := fmt.Sprintf("%s%s%s", ac.Scheme, ac.Host, ac.UrlPath)
+	reqURL := fmt.Sprintf("%s://%s:%d%s", ac.Scheme, ac.Host, ac.Port, ac.UrlPath)
 	if ac.Params != nil {
-		if ac.UrlPath != AuthGetAccessToken {
+		if ac.UrlPath != AuthGetAccessToken && ac.UrlPath != strings.ReplaceAll(AuthGetAccessToken, "v2", "v1") {
 			ac.Params.Set("access_token", ac.GetAccessToken())
 		}
 		if ac.Method == http.MethodGet {

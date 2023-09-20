@@ -1,4 +1,4 @@
-package version
+package apisdk
 
 type Strategy interface {
 	StrategyBillingCreate() Response

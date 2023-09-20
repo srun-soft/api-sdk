@@ -1,83 +1,55 @@
 package example
 
 import (
-	"context"
 	"fmt"
-	"github.com/go-redis/redis/v8"
-	"github.com/srun-soft/api-sdk/configs"
-	"github.com/srun-soft/api-sdk/sdk"
-	"sync"
-	"time"
+	"github.com/srun-soft/api-sdk/apisdk"
+	"net/url"
 )
 
-var (
-	wg  sync.WaitGroup
-	ctx = context.Background()
-	API *sdk.APIClient
-)
-
-func main() {
-	configs.Config = &configs.APIConfig{
-		Scheme:      "https://",
-		InterfaceIP: "127.0.0.1:8001",
-		AppId:       "srunsoft",
-		AppSecret:   "ba62f23e6212790052f387ee7af2943e4cfcece0",
+// v1 version api
+// do request /api/v1/user/view
+// @param user_name string
+// @return response{code:int,message:string,data:interface{}}
+func version1() {
+	sdk := &apisdk.ApiConfig{
+		Scheme:  "https",
+		Host:    "192.168.0.191",
+		Port:    8001,
+		Version: 1,
 	}
-
-	// ... 初始化其他配置 ...
-
-	// 配置 redis,如果需要将access_token缓存在redis,则将Cache改为你的redis连接,否则默认使用SyncMap
-	// example:
-
-	// ... redis connection start ...
-
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		configs.Cache = createClient("192.168.0.100", "16384")
-	}()
-	wg.Wait()
-
-	// ... redis connection end ...
-
-	// 创建 API 客户端
-	API = &sdk.APIClient{}
-
-	// 调用示例方法
-	createUserExample()
+	v := url.Values{}
+	v.Add("user_name", "yuantong")
+	sdk.Request.Params = v
+	res := sdk.UserView()
+	fmt.Println(res.Code)
+	fmt.Println(res.Message)
+	if res.Code == 0 {
+		m := res.Data.(map[string]interface{})
+		fmt.Printf("%v", m["user_name"])
+	}
 }
 
-// 创建 Redis 连接
-func createClient(host, port string) *redis.Client {
-	rdb := redis.NewClient(&redis.Options{
-		Addr:         fmt.Sprintf("%s:%s", host, port),
-		Password:     "srun_3000@redis",
-		DB:           0,
-		DialTimeout:  10 * time.Second,
-		ReadTimeout:  30 * time.Second,
-		WriteTimeout: 30 * time.Second,
-		PoolSize:     100,
-		PoolTimeout:  30 * time.Second,
-	})
-	_, err := rdb.Ping(ctx).Result()
-	if err != nil {
-		_ = fmt.Errorf("redis[%s] init err", port)
-		return nil
+// v2 version api
+// do request /api/v2/user/view
+// @param user_name string
+// @return response{code:int,message:string,data:interface{}}
+func version2() {
+	sdk := &apisdk.ApiConfig{
+		AppID:     "srunsoft",
+		AppSecret: "ba62f23e6212790052f387ee7af2943e4cfcece0",
+		Scheme:    "https",
+		Host:      "192.168.0.191",
+		Port:      8001,
+		Version:   2,
 	}
-	fmt.Printf("Redis[:%s] init Successful", port)
-	return rdb
-}
-
-// 开户示例
-func createUserExample() {
-	data := make(map[string]interface{})
-	data["user_name"] = "yt"
-	data["group_id"] = 2
-	data["user_password"] = "12345678"
-	data["products_id"] = 1
-	response, err := API.Users(data)
-	if err != nil {
-		return
+	v := url.Values{}
+	v.Add("user_name", "yuantong")
+	sdk.Request.Params = v
+	res := sdk.UserView()
+	fmt.Println(res.Code)
+	fmt.Println(res.Message)
+	if res.Code == 0 {
+		m := res.Data.(map[string]interface{})
+		fmt.Printf("%v", m["user_name"])
 	}
-	fmt.Println(response)
 }

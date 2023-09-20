@@ -1,4 +1,4 @@
-package version
+package apisdk
 
 const (
 	KeyApiSdkAccessToken = "key:api:sdk:access_token"

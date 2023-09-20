@@ -1,5 +1,5 @@
 # 北向接口SDK
-#### `version v1.0.0`
+#### `version v2.0.0`
 
 go调用北向接口SDK
 声明全局SDK指针结构体后,调用对应的接口即可。
@@ -11,14 +11,14 @@ go调用北向接口SDK
 ## Installation
 To install the SDK package, use the following command:
 ```bash
-go get -u github.com/srun-soft/api-sdk
+go get -u github.com/srun-soft/api-apisdk
 ```
 
 ## Usage
 import the SDK package in your Go code:
 ```go
 import (
-	"github.com/srun-soft/api-sdk"
+	"github.com/srun-soft/api-apisdk"
 )
 ```
 
