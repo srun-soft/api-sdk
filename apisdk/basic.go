@@ -2,7 +2,7 @@ package apisdk
 
 import (
 	"fmt"
-	"github.com/srun-soft/api-sdk/tools/cache"
+	"github.com/go-redis/redis/v8"
 	"net/http"
 )
 
@@ -12,19 +12,19 @@ type SDK interface {
 }
 
 type ApiConfig struct {
-	AppID       string
-	AppSecret   string
-	Scheme      string
-	Host        string
-	Port        int
-	Version     int
-	AccessToken string
+	AppID     string
+	AppSecret string
+	Scheme    string
+	Host      string
+	Port      int
+	Version   int
+	Cache     *redis.Client
 	Request
 }
 
 // GetAccessToken 获取令牌 /**
 func (ac *ApiConfig) GetAccessToken() string {
-	cacheComponent := cache.Component()
+	cacheComponent := Component(ac)
 	token := cacheComponent.GetCache(KeyApiSdkAccessToken)
 	if token == "" {
 		if ac.Version == 1 {
@@ -47,7 +47,7 @@ func (ac *ApiConfig) GetAccessToken() string {
 		if lt, ok := data["lifetime"]; ok {
 			cacheComponent.SetCache(KeyApiSdkAccessToken, token, lt.(float64))
 		} else {
-			cacheComponent.SetCache(KeyApiSdkAccessToken, token, float64(3600))
+			cacheComponent.SetCache(KeyApiSdkAccessToken, token, 3600)
 		}
 	}
 	return token

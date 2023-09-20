@@ -2,8 +2,10 @@ package example
 
 import (
 	"fmt"
+	"github.com/go-redis/redis/v8"
 	"github.com/srun-soft/api-sdk/apisdk"
 	"net/url"
+	"time"
 )
 
 // v1 version api
@@ -16,6 +18,17 @@ func version1() {
 		Host:    "192.168.0.191",
 		Port:    8001,
 		Version: 1,
+		// 如果需要使用redis缓存access_token，需要配置Cache为*redis.Client
+		Cache: redis.NewClient(&redis.Options{
+			Addr:         fmt.Sprintf("%s:%s", "192.168.0.191", "16384"),
+			Password:     "srun_3000@redis",
+			DB:           0,
+			DialTimeout:  10 * time.Second,
+			ReadTimeout:  30 * time.Second,
+			WriteTimeout: 30 * time.Second,
+			PoolSize:     100,
+			PoolTimeout:  30 * time.Second,
+		}),
 	}
 	v := url.Values{}
 	v.Add("user_name", "yuantong")
