@@ -3,7 +3,7 @@ package example
 import (
 	"fmt"
 	"github.com/go-redis/redis/v8"
-	"github.com/srun-soft/api-sdk/apisdk"
+	"github.com/srun-soft/api-sdk/v2/apisdk"
 	"net/url"
 	"time"
 )

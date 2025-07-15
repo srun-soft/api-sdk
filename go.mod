@@ -1,4 +1,4 @@
-module github.com/srun-soft/api-sdk
+module github.com/srun-soft/api-sdk/v2
 
 go 1.19
 
